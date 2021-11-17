@@ -1,0 +1,39 @@
+<app-header2></app-header2>
+
+<div style="background-color: white;" >
+    <div class="container">
+        <div class="search row justify-content-end p-2">
+            <input type="search" placeholder="Search" class="form-control col-md-4" (input)="onSearchChange($event)">
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    
+
+    <div class="doctorData p-3 m-1" *ngFor="let item of filteredDoctor">
+        <div class="row">
+            <div class="col-3 doctorInfo">
+                <h2>Doctor : {{item.fullName}}</h2>
+                <h2>Phone : {{item.phone}}</h2>
+                <h2>Title Degree : {{item.titleDegree}}</h2>
+            </div>
+            <div class="col-9 doctorSchedule" style="text-align: center;">
+                <button class="shift col-md-2 p-0 border-0 m-1" (click)="reserve(item.id,day.id)" *ngFor="let day of item.doctorschedules">
+                    <div class="shift-day p-2 text-center">
+                        {{day.dayWork}}
+                    </div>
+                    <div class="shift-time p-1">
+                        <div class="time">
+                            From : <span> {{ConvertTime(day.from)}}</span>
+                        </div>
+                        <div class="time">
+                            To : <span>{{ConvertTime(day.to)}}</span>
+                        </div>
+                    </div>
+            
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

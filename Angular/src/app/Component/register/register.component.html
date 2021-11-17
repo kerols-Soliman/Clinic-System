@@ -1,0 +1,67 @@
+<div class="col-md-6 offset-md-3 mt-5 mb-5">
+    <div class="card">
+        <h4 class="card-header">Register</h4>
+        <div class="card-body px-md-4">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+                <div class="form-group">
+                    <label class="col-3 col-md-4" for="username">Username</label>
+                    <div class="col-9 col-md-8 float-right">
+                        <input formControlName="username" type="text" class="form-control" placeholder="User Name"
+                            name="username"
+                            [class.is-invalid]="formField.username?.invalid && formField.username?.touched">
+                        <div *ngIf="formField.username?.invalid && formField.username?.touched">
+                            <small class="text-danger" *ngIf="formField.username?.errors.required">User Name is
+                                required</small>
+                            <small class="text-danger" *ngIf="formField.username.errors?.pattern">userName can't contain
+                                space</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-3 col-md-4" for="password">Password</label>
+                    <div class="col-9 col-md-8 float-right">
+                        <input formControlName="passwordHash" type="password" class="form-control"
+                            placeholder="Password" name="password"
+                            [class.is-invalid]="formField.passwordHash?.invalid && formField.passwordHash?.touched">
+                        <div *ngIf="formField.passwordHash?.invalid && formField.passwordHash?.touched">
+                            <small class="text-danger" *ngIf="formField.passwordHash?.errors.required">Password is
+                                required</small>
+                            <small class="text-danger" *ngIf="formField.passwordHash.errors?.pattern"> Password should
+                                more
+                                than 7 letter and have UpperCase Letter & LowerCase Letter & nonalphaChar &
+                                number</small>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-3 col-md-4" for="confirmPassword">Confirm Password</label>
+                    <div class="col-9 col-md-8 float-right">
+                        <input formControlName="confirmPassword" type="password" class="form-control"
+                            placeholder="Confirm Password" name="confirmPassword"
+                            [class.is-invalid]="formField.confirmPassword?.invalid && formField.confirmPassword?.touched">
+                        <div *ngIf="formField.confirmPassword?.invalid && formField.confirmPassword?.touched">
+                            <small class="text-danger" *ngIf="formField.confirmPassword?.errors.required">Confirm
+                                Password is
+                                required</small>
+                        </div>
+                        <small *ngIf="registerForm.errors?.misMatch&& formField.confirmPassword.touched"
+                            class="text-danger">
+                            Not Match Password
+                        </small>
+                    </div>
+                </div>
+
+
+                <div class="registerBtnWrapper text-center mt-5">
+                    <button class="btn btn-danger px-4">
+                        Register
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

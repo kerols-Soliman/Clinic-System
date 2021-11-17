@@ -1,0 +1,38 @@
+<div>
+    <div class="container mt-2">
+        <div class="row ">
+            <h2 class="pageTitle mt-2">Appointment Today</h2>      
+        </div>
+       
+        
+        <table class="table table-hover">
+            <thead class="">
+                <tr>
+                    <th>No.</th>
+                    <th scope="col">Doctor Name</th>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col">Reserve Details</th>
+                    <th scope="col">Patient Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of allAppointment;let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.doctorFullName}}</td>
+                    <td>{{item.patientName}}</td>
+                    <td>
+                        {{getDay(item.dateReserve)}} {{getDate(item.dateReserve)}} <br>
+                        from : {{ConvertTime(item.from)}} <br>
+                        to : {{ConvertTime(item.to)}}
+                    </td>
+                    <td>
+                        {{item.phone}}<br>
+                        {{getDate(item.birthday)}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+

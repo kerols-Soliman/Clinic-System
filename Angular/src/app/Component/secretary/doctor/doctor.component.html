@@ -1,0 +1,140 @@
+<div class="container">
+    <h2 class="pageTitle mt-2">All Doctor</h2>
+    <div style="text-align:end;" class="my-2">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            (click)="changeModalState('Add',0)">
+            New Doctor
+        </button>
+    </div>
+
+    <table class="table table-hover">
+        <thead class="">
+            <tr>
+                <th>No.</th>
+                <th scope="col">Doctor Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">National ID</th>
+                <th scope="col">Title Degree</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of AllDoctor;let i=index">
+                <td>{{i+1}}</td>
+                <td>{{item.fullName}}</td>
+                <td>{{item.phone}}</td>
+                <td>{{item.nationalId}}</td>
+                <td>{{item.titleDegree}}</td>
+                <td>
+                    <!-- <button class="btn btn-primary">Edit</button> -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                        (click)="changeModalState('modify',item.id)">
+                        Edit
+                    </button>
+                    <button class="btn btn-danger ml-2" (click)="delete(item.id)">Delete</button>
+                    <button class="btn btn-warning ml-2" (click)="appointment(item.id)">Appointment</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Doctor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form [formGroup]="newDoctorForm">
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Doctor Name</label>
+                        <div class="col-sm-8">
+                            <input formControlName="fullName" type="text" class="form-control" name="fullName"
+                                [class.is-invalid]="formFields.fullName?.invalid && formFields.fullName?.touched">
+                            <div *ngIf="formFields.fullName?.invalid && formFields.fullName?.touched">
+                                <small class="text-danger" *ngIf="formFields.fullName.errors?.required">The fullName in
+                                    required</small>
+                                <small class="text-danger" *ngIf="formFields.fullName.errors?.minlength">The Number
+                                    Should be More Than 3 Character</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Phone</label>
+                        <div class="col-sm-8">
+                            <input formControlName="Phone" type="text" class="form-control" name="Phone"
+                                [class.is-invalid]="formFields.Phone?.invalid && formFields.Phone?.touched">
+                            <div *ngIf="formFields.Phone?.invalid && formFields.Phone?.touched">
+                                <small class="text-danger" *ngIf="formFields.Phone.errors?.required">The Phone in
+                                    required</small>
+                                <small class="text-danger"
+                                    *ngIf="formFields.Phone.errors?.minlength||formFields.Phone.errors?.maxlength">The
+                                    Number Should
+                                    be 11 Digit</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">National ID</label>
+                        <div class="col-sm-8">
+                            <input formControlName="NationalId" type="text" class="form-control" name="NationalId"
+                                [class.is-invalid]="formFields.NationalId?.invalid && formFields.NationalId?.touched">
+                            <div *ngIf="formFields.NationalId?.invalid && formFields.NationalId?.touched">
+                                <small class="text-danger" *ngIf="formFields.NationalId.errors?.required">The National
+                                    ID in required</small>
+                                <small class="text-danger"
+                                    *ngIf="formFields.NationalId.errors?.minlength||formFields.NationalId.errors?.maxlength">The
+                                    Number
+                                    Should be 14 Digit</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Title Degree</label>
+                        <div class="col-sm-8">
+                            <input formControlName="TitleDegree" type="text" class="form-control" name="TitleDegree"
+                                [class.is-invalid]="formFields.TitleDegree?.invalid && formFields.TitleDegree?.touched">
+                            <div *ngIf="formFields.TitleDegree?.invalid && formFields.TitleDegree?.touched">
+                                <small class="text-danger" *ngIf="formFields.TitleDegree.errors?.required">The National
+                                    ID in required</small>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        #addOrUpdateBtnReference>Close</button>
+                    <button type="button" class="btn btn-primary" *ngIf="ModalState=='Add'" (click)="add()">Add</button>
+                    <button type="button" class="btn btn-primary" *ngIf="ModalState=='modify'" (click)="Edit()">Edit</button>
+                </div>
+            </form>
+
+
+
+
+        </div>
+    </div>
+</div>

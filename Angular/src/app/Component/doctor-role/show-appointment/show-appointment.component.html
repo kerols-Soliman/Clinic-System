@@ -1,0 +1,90 @@
+
+
+
+
+<div *ngIf="!IsDoctorIdEnterd">
+    <div class="container p-4">
+        <div class="form-group row justify-content-center">
+            <div class="col-4">
+                <input type="text" class="form-control" #inputdoctorId placeholder="Doctor Id">
+            </div>
+            <div class="col-1">
+                <input type="submit" value="Enter" class="btn btn-primary" (click)="loadData(inputdoctorId.value)">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="IsDoctorIdEnterd">
+    <div class="container mt-2">
+        <div class="row justify-content-between">
+            <h2 class="pageTitle mt-2">Appointment</h2>
+            <div>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Select Specific Range
+                </button>
+            </div>
+            
+            
+        </div>
+       
+        
+        <table class="table table-hover">
+            <thead class="">
+                <tr>
+                    <th>No.</th>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col">Reserve Details</th>
+                    <th scope="col">Patient Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of allReserve;let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.patientName}}</td>
+                    <td>
+                        {{getDay(item.dateReserve)}} {{getDate(item.dateReserve)}} <br>
+                        from : {{ConvertTime(item.from)}} <br>
+                        to : {{ConvertTime(item.to)}}
+                    </td>
+                    <td>
+                        {{item.phone}}<br>
+                        {{getDate(item.birthday)}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Select Date Range</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div >
+                    <div class="form-group row justify-content-center">
+                        <label class="col-2 col-form-label">From : </label>
+                        <input class="col-6 form-control" type="date" [(ngModel)]="fromDate">
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label class="col-2 col-form-label">To : </label>
+                        <input class="col-6 form-control" type="date" [(ngModel)]="toDate">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" #closeModelBtn class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-primary" value="Search" (click)="SpecificRange()">
+            </div>
+        </div>
+    </div>
+</div>

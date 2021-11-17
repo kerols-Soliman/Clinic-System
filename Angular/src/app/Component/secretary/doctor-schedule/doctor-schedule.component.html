@@ -1,0 +1,176 @@
+<div class="container">
+    <h2 class="doctorName">{{doctorDetails?.fullName}}</h2>
+    <hr>
+    <div class="schedule">
+        <div class="header-Info text-center p-2">
+            Doctor Schedule
+        </div>
+        <div class="dayDetails p-4">
+            <div class="saterday">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" [checked]="IsSaterdayChecked"
+                            (change)="SaterdayChanged($event)">
+                        <span>Saturday</span>
+                    </label>
+                </div>
+                <div class="shifts" *ngIf="IsSaterdayChecked">
+                    <form [formGroup]="SaterdayForm">
+                        <div class="form-group">
+                            <label class="shift">Shift:</label>
+                            <label class="d-inline-block">From</label>
+                            <input type="time" class="form-control fromInput" formControlName="From">
+                            <br class="d-block d-md-none">
+                            <label class="d-inline-block toLabel">To</label>
+                            <input type="time" class="form-control" formControlName="To">
+                            <br class="d-block d-md-none">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="sunday">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" [checked]="IsSundayChecked"
+                            (change)="SundayChanged($event)">
+                        <span>Sunday</span>
+                    </label>
+                </div>
+                <div class="shifts" *ngIf="IsSundayChecked">
+                    <form [formGroup]="SundayForm">
+                        <div class="form-group">
+                            <label class="shift">Shift:</label>
+                            <label class="d-inline-block">From</label>
+                            <input type="time" class="form-control fromInput" formControlName="From">
+                            <br class="d-block d-md-none">
+                            <label class="d-inline-block toLabel">To</label>
+                            <input type="time" class="form-control" formControlName="To">
+                            <br class="d-block d-md-none">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="Monday">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" [checked]="IsMondayChecked"
+                            (change)="MondayChanged($event)">
+                        <span>Monday</span>
+                    </label>
+                </div>
+                <div class="shifts" *ngIf="IsMondayChecked">
+                    <form [formGroup]="MondayForm">
+                        <div class="form-group">
+                            <label class="shift">Shift:</label>
+                            <label class="d-inline-block">From</label>
+                            <input type="time" class="form-control fromInput" formControlName="From">
+                            <br class="d-block d-md-none">
+                            <label class="d-inline-block toLabel">To</label>
+                            <input type="time" class="form-control" formControlName="To">
+                            <br class="d-block d-md-none">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="Tuesday">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" [checked]="IsTuesdayChecked"
+                            (change)="TuesdayChanged($event)">
+                        <span>Tuesday</span>
+                    </label>
+                </div>
+                <div class="shifts" *ngIf="IsTuesdayChecked">
+                    <form [formGroup]="TuesdayForm">
+                        <div class="form-group">
+                            <label class="shift">Shift:</label>
+                            <label class="d-inline-block">From</label>
+                            <input type="time" class="form-control fromInput" formControlName="From">
+                            <br class="d-block d-md-none">
+                            <label class="d-inline-block toLabel">To</label>
+                            <input type="time" class="form-control" formControlName="To">
+                            <br class="d-block d-md-none">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="Wednesday">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" [checked]="IsWednesdayChecked"
+                            (change)="WednesdayChanged($event)">
+                        <span>Wednesday</span>
+                    </label>
+                </div>
+                <div class="shifts" *ngIf="IsWednesdayChecked">
+                    <form [formGroup]="WednesdayForm">
+                        <div class="form-group">
+                            <label class="shift">Shift:</label>
+                            <label class="d-inline-block">From</label>
+                            <input type="time" class="form-control fromInput" formControlName="From">
+                            <br class="d-block d-md-none">
+                            <label class="d-inline-block toLabel">To</label>
+                            <input type="time" class="form-control" formControlName="To">
+                            <br class="d-block d-md-none">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="Thursday">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" [checked]="IsThursdayChecked"
+                            (change)="ThursdayChanged($event)">
+                        <span>Thursday</span>
+                    </label>
+                </div>
+                <div class="shifts" *ngIf="IsThursdayChecked">
+                    <form [formGroup]="ThursdayForm">
+                        <div class="form-group">
+                            <label class="shift">Shift:</label>
+                            <label class="d-inline-block">From</label>
+                            <input type="time" class="form-control fromInput" formControlName="From">
+                            <br class="d-block d-md-none">
+                            <label class="d-inline-block toLabel">To</label>
+                            <input type="time" class="form-control" formControlName="To">
+                            <br class="d-block d-md-none">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="Friday">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" [checked]="IsFridayChecked"
+                            (change)="FridayChanged($event)">
+                        <span>Friday</span>
+                    </label>
+                </div>
+                <div class="shifts" *ngIf="IsFridayChecked">
+                    <form [formGroup]="FridayForm">
+                        <div class="form-group">
+                            <label class="shift">Shift:</label>
+                            <label class="d-inline-block">From</label>
+                            <input type="time" class="form-control fromInput" formControlName="From">
+                            <br class="d-block d-md-none">
+                            <label class="d-inline-block toLabel">To</label>
+                            <input type="time" class="form-control" formControlName="To">
+                            <br class="d-block d-md-none">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="text-center">
+                <button class="btn btn-primary mt-3" (click)="save()">save</button>
+            </div>
+            
+        </div>
+
+
+    </div>
+    <br>
+
+
+</div>

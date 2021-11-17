@@ -1,0 +1,35 @@
+
+<div class="container">
+    <div class="doctorDetails my-3">
+        <div class="row">
+            <h4 class="col-2 info">Doctor :</h4><h4 class="col-10"> {{doctorDetails?.fullName}}</h4>
+        </div>
+        <div class="row">
+            <h4 class="col-2 info">Phone :</h4><h4 class="col-10"> {{doctorDetails?.phone}}</h4>
+        </div>
+        <div class="row">
+            <h4 class="col-2 info">Title Degree:</h4><h4 class="col-10"> {{doctorDetails?.titleDegree}}</h4>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="shift col-md-2 mb-3" *ngFor="let item of doctorShedule">
+            <div class="shift-day p-2 text-center">
+                {{item.dayWork}}
+            </div>
+            <div class="shift-time p-2">
+                <div class="time">
+                    From : <span> {{ConvertTime(item.from)}}</span>
+                </div>
+                <div class="time">
+                    To : <span>{{ConvertTime(item.to)}}</span>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    <div class="row justify-content-end mb-2">
+        <button class="btn btn-primary" (click)="changeSchedule()">Change Schedule</button>
+    </div>
+    
+</div>
